@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { Home } from "./home";
+import { Home } from "./modules/home/home";
 export enum ERoutes {
   home = "/home"
 }

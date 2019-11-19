@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using NLog;
 using PaulExpress.Api.Authentication;
 using PaulExpress.Api.Swagger;
+using PaulExpress.DataAccess;
 using PaulExpress.Domain.Config;
 
 namespace PaulExpress.Api
@@ -46,6 +48,8 @@ namespace PaulExpress.Api
 
             IConfigurationSection appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
+            services.AddDbContext<PaulExpressDBContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("PaulExpressDB")));
 
             services.SetupAuthentication(Configuration);
         }

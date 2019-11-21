@@ -19,9 +19,9 @@
     <PackageReference Include="NLog.Schema" Version="4.6.8" />
     <PackageReference Include="NLog.Targets.ElasticSearch" Version="7.1.0" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
-    <PackageReference Include="NsiTools.EfUtils.Core" Version="1.9.1" />
-    <PackageReference Include="NsiTools.Mvc.Core" Version="1.9.1" />
-    <PackageReference Include="NsiTools.Utils" Version="1.9.1" />
+    <PackageReference Include="NsiTools.EfUtils.Core" Version="2.0.3" />
+    <PackageReference Include="NsiTools.Mvc.Core" Version="2.0.3" />
+    <PackageReference Include="NsiTools.Utils" Version="2.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
   </ItemGroup>
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PaulExpress.Domain.Entities
 {
-    public class PaymentMethod
+    public class PaymentMethod : BaseEntity
     {
         public int PaymentMethodId { get; set; }
         public int Name { get; set; }

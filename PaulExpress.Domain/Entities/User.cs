@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PaulExpress.Domain.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
         public int UserId { get; set; }
         public string Trigram { get; set; }

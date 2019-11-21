@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PaulExpress.Domain.Entities
+﻿namespace PaulExpress.Domain.Dtos.Simple
 {
-    public class OrderLine : BaseEntity
+    public class OrderLineDto : BaseEntityDto
     {
         public int OrderLineId { get; set; }
         public int UserId { get; set; }
@@ -15,8 +11,5 @@ namespace PaulExpress.Domain.Entities
         public int OrderId { get; set; }
         public string Comment { get; set; }
         public bool IsPayed { get; set; }
-
-        public List<OrderLineSupplement> OrderLineSupplements { get; set; }
-
     }
 }

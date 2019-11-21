@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PaulExpress.Domain.Entities
 {
-    public class Supplement
+    public class Supplement : BaseEntity
     {
         public int SupplementId { get; set; }
         public int Name { get; set; }

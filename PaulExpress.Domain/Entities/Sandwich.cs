@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PaulExpress.Domain.Entities
 {
-    public class Sandwich
+    public class Sandwich : BaseEntity
     {
         public int SandwichId { get; set; }
         public string Name { get; set; }

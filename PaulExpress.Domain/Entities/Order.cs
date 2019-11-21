@@ -7,8 +7,8 @@ namespace PaulExpress.Domain.Entities
     public class Order
     {
         public int OrderId { get; set; }
-        public Datetime StartDate { get; set; }
-        public Datetime EndDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public string Comment { get; set; }
 
         public List<OrderLine> OrderLines { get; set; }

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Button, Intent } from "@blueprintjs/core";
 import { iconClass, INTENT_PRIMARY } from "@blueprintjs/core/lib/esm/common/classes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBicycle } from "@fortawesome/free-solid-svg-icons";
+import { faBicycle, faUtensils, faHistory } from "@fortawesome/free-solid-svg-icons";
 import { StyledCard } from "nsitools-react";
 
 interface IHomeProps {}
@@ -42,9 +42,13 @@ export const Home: React.FunctionComponent<IHomeProps> = props => {
         </div>
       </ImgContainer>
       <ButtonContainer>
-        <Button intent={Intent.PRIMARY} icon={<FontAwesomeIcon icon={faBicycle} />} text="Commander"></Button>
-        <Button intent={Intent.PRIMARY} text="Commandes antérieures"></Button>
-        <Button intent={Intent.PRIMARY} text="Comande en cours"></Button>
+        <Button intent={Intent.PRIMARY} icon={<FontAwesomeIcon icon={faUtensils} />} text="Commander"></Button>
+        <Button
+          intent={Intent.PRIMARY}
+          icon={<FontAwesomeIcon icon={faHistory} />}
+          text="Commandes antérieures"
+        ></Button>
+        <Button intent={Intent.PRIMARY} icon={<FontAwesomeIcon icon={faBicycle} />} text="Comande en cours"></Button>
       </ButtonContainer>
     </Container>
   );

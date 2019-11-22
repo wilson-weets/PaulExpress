@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PaulExpress.Api.Authentication;
 using PaulExpress.Domain.Dtos.Internal;
+using PaulExpress.Domain.Dtos.Simple;
 
 namespace PaulExpress.Api.Controllers
 {

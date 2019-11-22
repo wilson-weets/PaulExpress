@@ -1,5 +1,6 @@
 ﻿using PaulExpress.Abstractions.Services;
 using PaulExpress.Domain.Dtos.Internal;
+using PaulExpress.Domain.Dtos.Simple;
 
 namespace PaulExpress.BusinessLogic.Services
 {

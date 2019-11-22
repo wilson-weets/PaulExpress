@@ -8,6 +8,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using PaulExpress.Domain.Config;
 using PaulExpress.Domain.Dtos.Internal;
+using PaulExpress.Domain.Dtos.Simple;
 using PaulExpress.Domain.Enums;
 
 namespace PaulExpress.Api.Authentication
@@ -32,9 +33,7 @@ namespace PaulExpress.Api.Authentication
 
             // Get from db
             UserDto user = new UserDto();
-            user.FirstName = "Test First Name";
-            user.LastName = "Test Last Name";
-            user.UserName = auth.UserName;
+            user.Trigram = auth.UserName;
             user.Email = "test@test.com";
 
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();

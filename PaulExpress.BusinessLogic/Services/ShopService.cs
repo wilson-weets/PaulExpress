@@ -47,5 +47,6 @@ namespace PaulExpress.BusinessLogic.Services
         {
             return _sandwichRepository.Query.Where(s => s.ShopId == shopId).ProjectTo<SandwichDto>(_mapper.ConfigurationProvider).ToList();
         }
+
     }
 }

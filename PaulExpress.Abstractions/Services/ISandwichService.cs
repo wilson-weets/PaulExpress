@@ -8,6 +8,5 @@ namespace PaulExpress.Abstractions.Services
     public interface ISandwichService
     {
         SandwichDto GetSandwich(int id);
-        List<SandwichDto> GetSandwichesFromShop(int shopId);
     }
 }

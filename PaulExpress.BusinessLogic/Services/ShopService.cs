@@ -12,7 +12,7 @@ using System.Text;
 
 namespace PaulExpress.BusinessLogic.Services
 {
-    class ShopService: SearchRepositoryBase, IShopService
+    public class ShopService: SearchRepositoryBase, IShopService
     {
         private readonly IMapper _mapper;
         private readonly IShopRepository _shopRepository;

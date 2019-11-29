@@ -36,6 +36,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PaulExpress.Abstractions\PaulExpress.Abstractions.csproj" />
+    <ProjectReference Include="..\PaulExpress.BusinessLogic\PaulExpress.BusinessLogic.csproj" />
     <ProjectReference Include="..\PaulExpress.DataAccess\PaulExpress.DataAccess.csproj" />
     <ProjectReference Include="..\PaulExpress.Domain\PaulExpress.Domain.csproj" />
   </ItemGroup>

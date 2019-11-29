@@ -13,10 +13,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog;
+using PaulExpress.Abstractions.Repositories;
+using PaulExpress.Abstractions.Services;
 using PaulExpress.Api.Authentication;
 using PaulExpress.Api.Swagger;
+using PaulExpress.BusinessLogic.Services;
 using PaulExpress.DataAccess;
+using PaulExpress.DataAccess.Repositories;
 using PaulExpress.Domain.Config;
+using PaulExpress.Domain.Entities;
 
 namespace PaulExpress.Api
 {
@@ -54,6 +59,25 @@ namespace PaulExpress.Api
                 options.UseSqlServer(Configuration.GetConnectionString("PaulExpressDB")));
 
             services.SetupAuthentication(Configuration);
+
+            //dependency injection
+            //Repositories
+            services.AddScoped<IOrderLineRepository, OrderLineRepository>();
+            services.AddScoped<IOrderLineSupplementRepository, OrderLineSupplementRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+            services.AddScoped<ISandwichRepository, SandwichRepository>();
+            services.AddScoped<ISauceRepository, SauceRepository>();
+            services.AddScoped<IShopRepository, ShopRepository>();
+            services.AddScoped<ISupplementRepository, SupplementRepository>();
+
+            //Services
+            services.AddScoped<IReferentialService, ReferencialService>();
+            services.AddScoped<ISandwichService, SandwichService>();
+            services.AddScoped<IShopService, ShopService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IMapper, Mapper>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

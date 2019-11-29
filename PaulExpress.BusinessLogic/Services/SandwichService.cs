@@ -28,9 +28,5 @@ namespace PaulExpress.BusinessLogic.Services
             return _mapper.Map<SandwichDto>(dbo);
         }
 
-        public List<SandwichDto> GetSandwichesFromShop(int shopId)
-        {
-            return _sandwichRepository.Query.Where(s => s.ShopId == shopId).ProjectTo<SandwichDto>(_mapper.ConfigurationProvider).ToList();
-        }
     }
 }

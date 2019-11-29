@@ -9,6 +9,7 @@ namespace PaulExpress.Domain.Entities
         public int SupplementId { get; set; }
         public int Name { get; set; }
         public int UnitPrice { get; set; }
+        public int ShopId { get; set; }
         public List<OrderLineSupplement> OrderLineSupplements { get; set; }
     }
 }

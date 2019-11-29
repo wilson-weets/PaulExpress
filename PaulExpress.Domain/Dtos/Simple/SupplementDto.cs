@@ -5,5 +5,6 @@
         public int SupplementId { get; set; }
         public int Name { get; set; }
         public int UnitPrice { get; set; }
+        public int ShopId { get; set; }
     }
 }

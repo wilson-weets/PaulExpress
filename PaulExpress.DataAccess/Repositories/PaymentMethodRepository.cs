@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PaulExpress.DataAccess.Repositories
 {
-    Sandwich class PaymentMethodRepository : GenericRepository<PaymentMethod>, IPaymentMethodRepository
+    public class PaymentMethodRepository : GenericRepository<PaymentMethod>, IPaymentMethodRepository
     {
         public PaymentMethodRepository(PaulExpressDBContext context) : base(context)
         {

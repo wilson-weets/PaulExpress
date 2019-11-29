@@ -76,6 +76,9 @@ namespace PaulExpress.Api
             services.AddScoped<ISandwichService, SandwichService>();
             services.AddScoped<IShopService, ShopService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IOrderService, OrderService>();
+
+
             services.AddScoped<IMapper, Mapper>();
 
         }

@@ -12,6 +12,7 @@ namespace PaulExpress.Domain.Entities
         public string Category { get; set; }
         public string Ingredients { get; set; }
         public double UnitPrice { get; set; }
+        public bool CanSelectSauce { get; set; }
         public List<OrderLine> OrderLines { get; set; }
     }
 }

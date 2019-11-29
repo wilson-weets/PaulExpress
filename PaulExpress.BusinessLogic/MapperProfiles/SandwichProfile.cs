@@ -25,6 +25,13 @@ namespace PaulExpress.BusinessLogic.MapperProfiles
             CreateMap<Supplement, SupplementDto>();
 
             #endregion
+
+            #region Shop
+
+            CreateMap<Shop, ShopDto>();
+
+            #endregion
+
         }
     }
 }

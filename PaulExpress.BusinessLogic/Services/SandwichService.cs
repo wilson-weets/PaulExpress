@@ -3,7 +3,6 @@ using AutoMapper.QueryableExtensions;
 using NsiTools.EfUtils.Core;
 using PaulExpress.Abstractions.Repositories;
 using PaulExpress.Abstractions.Services;
-using PaulExpress.Domain.Dtos.Details;
 using PaulExpress.Domain.Dtos.Simple;
 using PaulExpress.Domain.Entities;
 using System;

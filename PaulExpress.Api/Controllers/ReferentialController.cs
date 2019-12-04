@@ -23,7 +23,7 @@ namespace PaulExpress.Api.Controllers
             _referentialService = referencialService;
         }
 
-        [AllowAnonymous]
+        [AllowAnonymous] //For testing only
         [HttpGet("{referentialType}")]
         [Authorize()]
         public ActionResult<ReferentialResultInfoDto> Get([FromRoute] EReferentialTypes referentialType, [FromQuery] int shopId)

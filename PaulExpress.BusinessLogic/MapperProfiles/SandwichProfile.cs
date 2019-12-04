@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using PaulExpress.Domain.Dtos.Details;
 using PaulExpress.Domain.Dtos.Internal;
 using PaulExpress.Domain.Dtos.Simple;
 using PaulExpress.Domain.Entities;
@@ -48,10 +47,6 @@ namespace PaulExpress.BusinessLogic.MapperProfiles
                 .ForMember(s => s.KeyValue, cfg => cfg.MapFrom(dbo => dbo.SupplementId))
                 ;
 
-            #endregion
-
-            #region
-            CreateMap<SandwichDto, SandwichDetailsDto>().ReverseMap();
             #endregion
 
         }

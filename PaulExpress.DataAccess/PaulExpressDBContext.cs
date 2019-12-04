@@ -17,6 +17,7 @@ namespace PaulExpress.DataAccess
         public DbSet<Sauce> Sauces { get; set; }
         public DbSet<Supplement> Supplements { get; set; }
 
+        public DbSet<Shop> Shop { get; set; }
         public PaulExpressDBContext(DbContextOptions options) : base(options)
         {
         }

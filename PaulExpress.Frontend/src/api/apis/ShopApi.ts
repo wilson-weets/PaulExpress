@@ -15,7 +15,7 @@
 import * as runtime from "../runtime";
 import { SandwichDto, SandwichDtoFromJSON, SandwichDtoToJSON } from "../models";
 
-export interface ShopApiApiShopShopIdGetRequest {
+export interface ShopApiApiShopSandwichShopIdGetRequest {
   shopId: number;
 }
 
@@ -25,13 +25,13 @@ export interface ShopApiApiShopShopIdGetRequest {
 export class ShopApi extends runtime.BaseAPI {
   /**
    */
-  async apiShopShopIdGetRaw(
-    requestParameters: ShopApiApiShopShopIdGetRequest
+  async apiShopSandwichShopIdGetRaw(
+    requestParameters: ShopApiApiShopSandwichShopIdGetRequest
   ): Promise<runtime.ApiResponse<Array<SandwichDto>>> {
     if (requestParameters.shopId === null || requestParameters.shopId === undefined) {
       throw new runtime.RequiredError(
         "shopId",
-        "Required parameter requestParameters.shopId was null or undefined when calling apiShopShopIdGet."
+        "Required parameter requestParameters.shopId was null or undefined when calling apiShopSandwichShopIdGet."
       );
     }
 
@@ -44,7 +44,10 @@ export class ShopApi extends runtime.BaseAPI {
     }
 
     const response = await this.request({
-      path: `/api/Shop/{shopId}`.replace(`{${"shopId"}}`, encodeURIComponent(String(requestParameters.shopId))),
+      path: `/api/Shop/sandwich/{shopId}`.replace(
+        `{${"shopId"}}`,
+        encodeURIComponent(String(requestParameters.shopId))
+      ),
       method: "GET",
       headers: headerParameters,
       query: queryParameters
@@ -55,8 +58,10 @@ export class ShopApi extends runtime.BaseAPI {
 
   /**
    */
-  async apiShopShopIdGet(requestParameters: ShopApiApiShopShopIdGetRequest): Promise<Array<SandwichDto>> {
-    const response = await this.apiShopShopIdGetRaw(requestParameters);
+  async apiShopSandwichShopIdGet(
+    requestParameters: ShopApiApiShopSandwichShopIdGetRequest
+  ): Promise<Array<SandwichDto>> {
+    const response = await this.apiShopSandwichShopIdGetRaw(requestParameters);
     return await response.value();
   }
 }

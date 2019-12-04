@@ -21,7 +21,7 @@ namespace PaulExpress.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("{shopId}")]
+        [HttpGet("sandwich/{shopId}")]
         public ActionResult<List<SandwichDto>> Get([FromRoute] int shopId)
         {
             return Ok(_shopService.GetSandwichesFromShop(shopId));

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SandwichDto } from "../../api/models/SandwichDto";
+import { SandwichDto } from "../../../api/models/SandwichDto";
 import styled from "styled-components";
 import { SelectBox, CheckboxInputField } from "nsitools-react";
 import { Checkbox } from "@blueprintjs/core";

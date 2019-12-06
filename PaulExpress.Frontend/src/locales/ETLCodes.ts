@@ -1,3 +1,6 @@
 export enum ETLCodes {
-  BONJOURWILSON
+  BONJOURWILSON,
+  Order,
+  Administration,
+  CurrentOrder
 }

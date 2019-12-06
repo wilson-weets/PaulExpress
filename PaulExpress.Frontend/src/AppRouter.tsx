@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { SandwichList } from "./modules/sandwich/SandwichList";
+import { SandwichList } from "./modules/Order/Sandwich/SandwichList";
 import { Home } from "./modules/Home";
 
 export enum ERoutes {

@@ -6,31 +6,27 @@ import { Colors, Label } from "@blueprintjs/core";
 import styled from "styled-components";
 import { AppRouter } from "./AppRouter";
 import { ErrorBoundary } from "nsitools-react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
+import PaulExpressSinglePage from "./modules/PaulExpressSinglePage";
 
 interface IAppProps {}
 
-const AppContainer = styled.div<{ isDark: boolean }>`
+const AppContainer = styled.div`
   display: flex;
   flex: 1;
   height: 100%;
   width: 100%;
   flex-direction: column;
-  background-color: ${props => (props.isDark ? Colors.DARK_GRAY2 : Colors.LIGHT_GRAY3)};
+  background-color: #f0d576;
 `;
 
-export const App: React.FunctionComponent<IAppProps> = props => {
+export const App: React.FunctionComponent<IAppProps> = () => {
   const { t, tUnsafe } = useTl();
 
   return (
     <BrowserRouter>
-      <AppContainer isDark={false}>
-        <Label>
-          App works! hello {t(ETLCodes.BONJOURWILSON)} <br /> {tUnsafe("FROMSERVER")}
-        </Label>
-        <ErrorBoundary>
-          <AppRouter />
-        </ErrorBoundary>
+      <AppContainer>
+        <PaulExpressSinglePage></PaulExpressSinglePage>
       </AppContainer>
     </BrowserRouter>
   );

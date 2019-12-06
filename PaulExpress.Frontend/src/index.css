@@ -9,3 +9,6 @@ body {
 #root {
   height: 100%;
 }
+
+@import "@blueprintjs/core/lib/css/blueprint";
+@import "@blueprintjs/icons/lib/css/blueprint-icons";

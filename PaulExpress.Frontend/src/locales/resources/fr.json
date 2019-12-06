@@ -1,5 +1,8 @@
 {
   "translation": {
-    "BONJOURWILSON": "BONJOURWILSON__fr"
+    "Administration": "Administration",
+    "BONJOURWILSON": "BONJOURWILSON__fr",
+    "CurrentOrder": "Commandes en cours",
+    "Order": "Commander"
   }
 }

@@ -70,6 +70,7 @@ namespace PaulExpress.Api
             services.AddScoped<ISauceRepository, SauceRepository>();
             services.AddScoped<IShopRepository, ShopRepository>();
             services.AddScoped<ISupplementRepository, SupplementRepository>();
+            services.AddScoped<IOrderStatusRepository, OrderStatusRepository>();
 
             //Services
             services.AddScoped<IReferentialService, ReferencialService>();

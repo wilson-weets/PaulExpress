@@ -322,7 +322,7 @@ namespace PaulExpress.DataAccess.Migrations
                     b.Property<int>("Name")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShopId")
+                    b.Property<int?>("ShopId")
                         .HasColumnType("int");
 
                     b.Property<int>("UnitPrice")
@@ -445,9 +445,7 @@ namespace PaulExpress.DataAccess.Migrations
                 {
                     b.HasOne("PaulExpress.Domain.Entities.Shop", "Shop")
                         .WithMany("Supplements")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShopId");
                 });
 #pragma warning restore 612, 618
         }

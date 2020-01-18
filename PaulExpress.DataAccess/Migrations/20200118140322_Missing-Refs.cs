@@ -41,16 +41,14 @@ namespace PaulExpress.DataAccess.Migrations
                 table: "Sauces",
                 column: "ShopId",
                 principalTable: "Shop",
-                principalColumn: "ShopId",
-                onDelete: ReferentialAction.Cascade);
+                principalColumn: "ShopId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Supplements_Shop_ShopId",
                 table: "Supplements",
                 column: "ShopId",
                 principalTable: "Shop",
-                principalColumn: "ShopId",
-                onDelete: ReferentialAction.Cascade);
+                principalColumn: "ShopId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

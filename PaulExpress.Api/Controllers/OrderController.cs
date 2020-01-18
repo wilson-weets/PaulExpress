@@ -29,8 +29,14 @@ namespace PaulExpress.Api.Controllers
             throw new NotImplementedException();
         }
 
+        [HttpGet("{orderId}")]
+        public ActionResult<OrderDetailDto> Get([FromRoute] int orderId)
+        {
+            return Ok(_orderService.GetOrder(orderId));
+        }
+
         [HttpPost("save")]
-        public ActionResult<OrderDto> Get(OrderDto order)
+        public ActionResult<OrderDto> Save(OrderDto order)
         {
             _orderService.Save(order);
             return Ok();

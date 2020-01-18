@@ -10,5 +10,7 @@ namespace PaulExpress.Domain.Entities
         public int OrderLineId { get; set; }
         public int SupplementId { get; set; }
 
+        public OrderLine OrderLine { get; set; }
+        public Supplement Supplement { get; set; }
     }
 }

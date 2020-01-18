@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NsiTools.EfUtils.Core;
+using NsiTools.EfUtils.Core.Interfaces;
+using PaulExpress.Domain.Entities;
 
 namespace PaulExpress.BusinessLogic.Services
 {
@@ -13,11 +16,13 @@ namespace PaulExpress.BusinessLogic.Services
     {
         private readonly IMapper _mapper;
         private readonly IOrderRepository _orderRepository;
+        private readonly IUnitOfWork _uow;
 
-        public OrderService(IMapper mapper, IOrderRepository orderRepository)
+        public OrderService(IMapper mapper, IOrderRepository orderRepository, IUnitOfWork uow)
         {
             _mapper = mapper;
             _orderRepository = orderRepository;
+            _uow = uow;
         }
 
         public OrderDto GetOrder(int orderId)
@@ -25,5 +30,23 @@ namespace PaulExpress.BusinessLogic.Services
             return _mapper.Map<OrderDto>(_orderRepository.GetById(orderId));
         }
 
+        public void Save(OrderDto order)
+        {
+            Order dbo;
+
+            if (order.OrderId > 0)
+            {
+                dbo = _orderRepository.GetById(order.OrderId);
+                _mapper.Map(order, dbo);
+                _orderRepository.Update(dbo);
+            }
+            else
+            {
+                dbo = _mapper.Map<Order>(order);
+                _orderRepository.Insert(dbo);
+            }
+
+            _uow.SaveChanges(new UnitOfWorkOptions());
+        }
     }
 }

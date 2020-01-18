@@ -31,6 +31,12 @@ namespace PaulExpress.BusinessLogic.MapperProfiles
             CreateMap<PaymentMethod, PaymentMethodDto>();
 
             #endregion
+
+            #region OrderStatus
+
+            CreateMap<OrderStatus, OrderStatusDto>();
+
+            #endregion
         }
     }
 }

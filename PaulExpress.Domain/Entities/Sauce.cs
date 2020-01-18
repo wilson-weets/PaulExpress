@@ -10,5 +10,6 @@ namespace PaulExpress.Domain.Entities
         public string Name { get; set; }
         public int ShopId { get; set; }
         public List<OrderLine> OrderLines { get; set; }
+        public Shop Shop { get; set; }
     }
 }

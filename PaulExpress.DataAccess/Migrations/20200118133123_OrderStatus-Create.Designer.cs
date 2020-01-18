@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PaulExpress.DataAccess;
 
 namespace PaulExpress.DataAccess.Migrations
 {
     [DbContext(typeof(PaulExpressDBContext))]
-    partial class PaulExpressDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200118133123_OrderStatus-Create")]
+    partial class OrderStatusCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,6 +79,9 @@ namespace PaulExpress.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderLineSupplementId")
                         .HasColumnType("int");
 
                     b.Property<int>("PaymentMethodId")
@@ -153,14 +158,14 @@ namespace PaulExpress.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -186,8 +191,8 @@ namespace PaulExpress.DataAccess.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Name")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -271,8 +276,6 @@ namespace PaulExpress.DataAccess.Migrations
 
                     b.HasKey("SauceId");
 
-                    b.HasIndex("ShopId");
-
                     b.ToTable("Sauces");
                 });
 
@@ -336,8 +339,6 @@ namespace PaulExpress.DataAccess.Migrations
 
                     b.HasKey("SupplementId");
 
-                    b.HasIndex("ShopId");
-
                     b.ToTable("Supplements");
                 });
 
@@ -371,7 +372,7 @@ namespace PaulExpress.DataAccess.Migrations
             modelBuilder.Entity("PaulExpress.Domain.Entities.Order", b =>
                 {
                     b.HasOne("PaulExpress.Domain.Entities.OrderStatus", "OrderStatus")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("OrderStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -379,29 +380,29 @@ namespace PaulExpress.DataAccess.Migrations
 
             modelBuilder.Entity("PaulExpress.Domain.Entities.OrderLine", b =>
                 {
-                    b.HasOne("PaulExpress.Domain.Entities.Order", "Order")
+                    b.HasOne("PaulExpress.Domain.Entities.Order", null)
                         .WithMany("OrderLines")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PaulExpress.Domain.Entities.PaymentMethod", "PaymentMethod")
+                    b.HasOne("PaulExpress.Domain.Entities.PaymentMethod", null)
                         .WithMany("OrderLines")
                         .HasForeignKey("PaymentMethodId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PaulExpress.Domain.Entities.Sandwich", "Sandwich")
+                    b.HasOne("PaulExpress.Domain.Entities.Sandwich", null)
                         .WithMany("OrderLines")
                         .HasForeignKey("SandwichId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PaulExpress.Domain.Entities.Sauce", "Sauce")
+                    b.HasOne("PaulExpress.Domain.Entities.Sauce", null)
                         .WithMany("OrderLines")
                         .HasForeignKey("SauceId");
 
-                    b.HasOne("PaulExpress.Domain.Entities.User", "User")
+                    b.HasOne("PaulExpress.Domain.Entities.User", null)
                         .WithMany("OrderLines")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -410,13 +411,13 @@ namespace PaulExpress.DataAccess.Migrations
 
             modelBuilder.Entity("PaulExpress.Domain.Entities.OrderLineSupplement", b =>
                 {
-                    b.HasOne("PaulExpress.Domain.Entities.OrderLine", "OrderLine")
+                    b.HasOne("PaulExpress.Domain.Entities.OrderLine", null)
                         .WithMany("OrderLineSupplements")
                         .HasForeignKey("OrderLineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PaulExpress.Domain.Entities.Supplement", "Supplement")
+                    b.HasOne("PaulExpress.Domain.Entities.Supplement", null)
                         .WithMany("OrderLineSupplements")
                         .HasForeignKey("SupplementId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -425,26 +426,8 @@ namespace PaulExpress.DataAccess.Migrations
 
             modelBuilder.Entity("PaulExpress.Domain.Entities.Sandwich", b =>
                 {
-                    b.HasOne("PaulExpress.Domain.Entities.Shop", "Shop")
+                    b.HasOne("PaulExpress.Domain.Entities.Shop", null)
                         .WithMany("Sandwiches")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PaulExpress.Domain.Entities.Sauce", b =>
-                {
-                    b.HasOne("PaulExpress.Domain.Entities.Shop", "Shop")
-                        .WithMany("Sauces")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PaulExpress.Domain.Entities.Supplement", b =>
-                {
-                    b.HasOne("PaulExpress.Domain.Entities.Shop", "Shop")
-                        .WithMany("Supplements")
                         .HasForeignKey("ShopId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

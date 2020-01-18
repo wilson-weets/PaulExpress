@@ -10,5 +10,7 @@ namespace PaulExpress.Domain.Entities
         public string Name { get; set; }
         public string Address { get; set; }
         public List<Sandwich> Sandwiches { get; set; }
+        public List<Sauce> Sauces { get; set; }
+        public List<Supplement> Supplements { get; set; }
     }
 }

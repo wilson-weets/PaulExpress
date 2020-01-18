@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace PaulExpress.Domain.Dtos.Simple
+namespace PaulExpress.Domain.Dtos.Details
 {
-    public class OrderDto : BaseEntityDto
+    public class OrderGridDto
     {
         public int OrderId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Comment { get; set; }
-        public int OrderStatusId { get; set; }
+        public int OrderStatusName { get; set; }
     }
 }

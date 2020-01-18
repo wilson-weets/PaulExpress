@@ -10,7 +10,9 @@ namespace PaulExpress.Domain.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Comment { get; set; }
+        public int OrderStatusId { get; set; }
 
         public List<OrderLine> OrderLines { get; set; }
+        public OrderStatus OrderStatus { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace PaulExpress.Domain.Entities
     public class PaymentMethod : BaseEntity
     {
         public int PaymentMethodId { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
         public List<OrderLine> OrderLines { get; set; }
     }
 }

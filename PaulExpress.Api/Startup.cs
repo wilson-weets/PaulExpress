@@ -13,6 +13,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog;
+using NsiTools.EfUtils.Core;
+using NsiTools.EfUtils.Core.Interfaces;
+using PaulExpress.Abstractions;
 using PaulExpress.Abstractions.Repositories;
 using PaulExpress.Abstractions.Services;
 using PaulExpress.Api.Authentication;
@@ -59,8 +62,11 @@ namespace PaulExpress.Api
                 options.UseSqlServer(Configuration.GetConnectionString("PaulExpressDB")));
 
             services.SetupAuthentication(Configuration);
-
+            
             //dependency injection
+            services.AddScoped<IAuthorTraceability, WebAuthorTraceability>();
+            services.AddScoped<IPaulExpressUnitOfWork, PaulExpressUnitOfWork>();
+
             //Repositories
             services.AddScoped<IOrderLineRepository, OrderLineRepository>();
             services.AddScoped<IOrderLineSupplementRepository, OrderLineSupplementRepository>();

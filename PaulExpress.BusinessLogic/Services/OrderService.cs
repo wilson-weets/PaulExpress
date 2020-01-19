@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using NsiTools.EfUtils.Core;
 using NsiTools.EfUtils.Core.Interfaces;
+using PaulExpress.Abstractions;
 using PaulExpress.Domain.Entities;
 
 namespace PaulExpress.BusinessLogic.Services
@@ -16,9 +17,9 @@ namespace PaulExpress.BusinessLogic.Services
     {
         private readonly IMapper _mapper;
         private readonly IOrderRepository _orderRepository;
-        private readonly IUnitOfWork _uow;
+        private readonly IPaulExpressUnitOfWork _uow;
 
-        public OrderService(IMapper mapper, IOrderRepository orderRepository, IUnitOfWork uow)
+        public OrderService(IMapper mapper, IOrderRepository orderRepository, IPaulExpressUnitOfWork uow)
         {
             _mapper = mapper;
             _orderRepository = orderRepository;

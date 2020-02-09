@@ -38,7 +38,13 @@ namespace PaulExpress.Api.Controllers
         [HttpPost("save")]
         public ActionResult<OrderDto> Save(OrderDto order)
         {
-            _orderService.Save(order);
+            return Ok(_orderService.Save(order));
+        }
+
+        [HttpGet("Delete/{orderId}")]
+        public ActionResult Delete([FromRoute] int orderId)
+        {
+            _orderService.Delete(orderId);
             return Ok();
         }
     }

@@ -8,6 +8,7 @@ namespace PaulExpress.Abstractions.Services
     public interface IOrderService
     {
         OrderDto GetOrder(int orderId);
-        void Save(OrderDto order);
+        OrderDto Save(OrderDto order);
+        void Delete(int orderId);
     }
 }

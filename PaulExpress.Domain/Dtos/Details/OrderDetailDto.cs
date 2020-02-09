@@ -5,6 +5,6 @@ namespace PaulExpress.Domain.Dtos.Details
 {
     public class OrderDetailDto : OrderDto
     {
-        public EOrderStatusCode OrderStatusCode { get; set; }
+        public string OrderStatusCode { get; set; }
     }
 }

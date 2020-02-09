@@ -31,7 +31,7 @@ namespace PaulExpress.BusinessLogic.Services
             return _mapper.Map<OrderDto>(_orderRepository.GetById(orderId));
         }
 
-        public void Save(OrderDto order)
+        public OrderDto Save(OrderDto order)
         {
             Order dbo;
 
@@ -47,6 +47,13 @@ namespace PaulExpress.BusinessLogic.Services
                 _orderRepository.Insert(dbo);
             }
 
+            _uow.SaveChanges(new UnitOfWorkOptions());
+            return _mapper.Map<OrderDto>(dbo);
+        }
+
+        public void Delete(int orderId)
+        {
+            _orderRepository.Delete(orderId);
             _uow.SaveChanges(new UnitOfWorkOptions());
         }
     }

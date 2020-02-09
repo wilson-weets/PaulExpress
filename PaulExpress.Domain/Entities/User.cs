@@ -9,5 +9,6 @@ namespace PaulExpress.Domain.Entities
         public int UserId { get; set; }
         public string Trigram { get; set; }
         public List<OrderLine> OrderLines { get; set; }
+        public List<UserRole> UserRoles { get; set; }
     }
 }

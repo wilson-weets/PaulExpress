@@ -13,7 +13,16 @@
  */
 
 import { exists, mapValues } from "../runtime";
-import { OrderGridDto, OrderGridDtoFromJSON, OrderGridDtoFromJSONTyped, OrderGridDtoToJSON } from "./";
+import {
+  AggregateResult,
+  AggregateResultFromJSON,
+  AggregateResultFromJSONTyped,
+  AggregateResultToJSON,
+  OrderGridDto,
+  OrderGridDtoFromJSON,
+  OrderGridDtoFromJSONTyped,
+  OrderGridDtoToJSON
+} from "./";
 
 /**
  *
@@ -57,6 +66,12 @@ export interface OrderGridDtoPaginatedResults {
    * @memberof OrderGridDtoPaginatedResults
    */
   results?: Array<OrderGridDto> | null;
+  /**
+   *
+   * @type {Array<AggregateResult>}
+   * @memberof OrderGridDtoPaginatedResults
+   */
+  aggregateResults?: Array<AggregateResult> | null;
 }
 
 export function OrderGridDtoPaginatedResultsFromJSON(json: any): OrderGridDtoPaginatedResults {
@@ -80,7 +95,12 @@ export function OrderGridDtoPaginatedResultsFromJSONTyped(
       ? undefined
       : json["results"] === null
       ? null
-      : (json["results"] as Array<any>).map(OrderGridDtoFromJSON)
+      : (json["results"] as Array<any>).map(OrderGridDtoFromJSON),
+    aggregateResults: !exists(json, "aggregateResults")
+      ? undefined
+      : json["aggregateResults"] === null
+      ? null
+      : (json["aggregateResults"] as Array<any>).map(AggregateResultFromJSON)
   };
 }
 
@@ -100,6 +120,12 @@ export function OrderGridDtoPaginatedResultsToJSON(value?: OrderGridDtoPaginated
         ? undefined
         : value.results === null
         ? null
-        : (value.results as Array<any>).map(OrderGridDtoToJSON)
+        : (value.results as Array<any>).map(OrderGridDtoToJSON),
+    aggregateResults:
+      value.aggregateResults === undefined
+        ? undefined
+        : value.aggregateResults === null
+        ? null
+        : (value.aggregateResults as Array<any>).map(AggregateResultToJSON)
   };
 }

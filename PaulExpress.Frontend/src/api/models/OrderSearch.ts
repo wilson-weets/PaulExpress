@@ -13,6 +13,8 @@
  */
 
 import { exists, mapValues } from "../runtime";
+import { AggregateKeyInfo, AggregateKeyInfoFromJSON, AggregateKeyInfoFromJSONTyped, AggregateKeyInfoToJSON } from "./";
+
 /**
  *
  * @export
@@ -45,6 +47,12 @@ export interface OrderSearch {
   readonly skipCount?: number;
   /**
    *
+   * @type {Array<AggregateKeyInfo>}
+   * @memberof OrderSearch
+   */
+  aggregateKeys?: Array<AggregateKeyInfo> | null;
+  /**
+   *
    * @type {number}
    * @memberof OrderSearch
    */
@@ -55,6 +63,12 @@ export interface OrderSearch {
    * @memberof OrderSearch
    */
   forceTake?: number | null;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderSearch
+   */
+  filter?: string | null;
 }
 
 export function OrderSearchFromJSON(json: any): OrderSearch {
@@ -70,8 +84,14 @@ export function OrderSearchFromJSONTyped(json: any, ignoreDiscriminator: boolean
     pageSize: !exists(json, "pageSize") ? undefined : json["pageSize"],
     sortKey: !exists(json, "sortKey") ? undefined : json["sortKey"],
     skipCount: !exists(json, "skipCount") ? undefined : json["skipCount"],
+    aggregateKeys: !exists(json, "aggregateKeys")
+      ? undefined
+      : json["aggregateKeys"] === null
+      ? null
+      : (json["aggregateKeys"] as Array<any>).map(AggregateKeyInfoFromJSON),
     forceSkip: !exists(json, "forceSkip") ? undefined : json["forceSkip"],
-    forceTake: !exists(json, "forceTake") ? undefined : json["forceTake"]
+    forceTake: !exists(json, "forceTake") ? undefined : json["forceTake"],
+    filter: !exists(json, "filter") ? undefined : json["filter"]
   };
 }
 
@@ -86,7 +106,14 @@ export function OrderSearchToJSON(value?: OrderSearch | null): any {
     pageNumber: value.pageNumber,
     pageSize: value.pageSize,
     sortKey: value.sortKey,
+    aggregateKeys:
+      value.aggregateKeys === undefined
+        ? undefined
+        : value.aggregateKeys === null
+        ? null
+        : (value.aggregateKeys as Array<any>).map(AggregateKeyInfoToJSON),
     forceSkip: value.forceSkip,
-    forceTake: value.forceTake
+    forceTake: value.forceTake,
+    filter: value.filter
   };
 }

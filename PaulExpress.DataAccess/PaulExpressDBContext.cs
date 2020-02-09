@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using PaulExpress.Domain.Entities;
+using Action = PaulExpress.Domain.Entities.Action;
 
 namespace PaulExpress.DataAccess
 {
@@ -18,6 +19,10 @@ namespace PaulExpress.DataAccess
         public DbSet<Supplement> Supplements { get; set; }
         public DbSet<Shop> Shop { get; set; }
         public DbSet<OrderStatus> OrderStatus { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<Action> Actions { get; set; }
+        public DbSet<ActionRole> ActionRoles { get; set; }
 
         public PaulExpressDBContext(DbContextOptions options) : base(options)
         {

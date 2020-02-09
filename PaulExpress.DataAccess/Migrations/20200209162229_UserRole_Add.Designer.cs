@@ -3,82 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PaulExpress.DataAccess;
 
 namespace PaulExpress.DataAccess.Migrations
 {
     [DbContext(typeof(PaulExpressDBContext))]
-    partial class PaulExpressDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200209162229_UserRole_Add")]
+    partial class UserRole_Add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("PaulExpress.Domain.Entities.Action", b =>
-                {
-                    b.Property<int>("ActionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ActionId");
-
-                    b.ToTable("Actions");
-                });
-
-            modelBuilder.Entity("PaulExpress.Domain.Entities.ActionRole", b =>
-                {
-                    b.Property<int>("ActionRoleId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ActionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ActionRoleId");
-
-                    b.HasIndex("ActionId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("ActionRoles");
-                });
 
             modelBuilder.Entity("PaulExpress.Domain.Entities.Order", b =>
                 {
@@ -288,7 +229,7 @@ namespace PaulExpress.DataAccess.Migrations
 
                     b.HasKey("RoleId");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("PaulExpress.Domain.Entities.Sandwich", b =>
@@ -490,22 +431,7 @@ namespace PaulExpress.DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRoles");
-                });
-
-            modelBuilder.Entity("PaulExpress.Domain.Entities.ActionRole", b =>
-                {
-                    b.HasOne("PaulExpress.Domain.Entities.Action", "Action")
-                        .WithMany("ActionRoles")
-                        .HasForeignKey("ActionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PaulExpress.Domain.Entities.Role", "Role")
-                        .WithMany("ActionRoles")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("PaulExpress.Domain.Entities.Order", b =>

@@ -45,10 +45,10 @@ export interface OrderGridDto {
   comment?: string | null;
   /**
    *
-   * @type {number}
+   * @type {string}
    * @memberof OrderGridDto
    */
-  orderStatusName?: number;
+  orderStatusName?: string | null;
 }
 
 export function OrderGridDtoFromJSON(json: any): OrderGridDto {

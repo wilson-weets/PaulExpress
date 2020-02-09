@@ -13,8 +13,6 @@
  */
 
 import { exists, mapValues } from "../runtime";
-import { EOrderStatusCode, EOrderStatusCodeFromJSON, EOrderStatusCodeFromJSONTyped, EOrderStatusCodeToJSON } from "./";
-
 /**
  *
  * @export
@@ -23,10 +21,10 @@ import { EOrderStatusCode, EOrderStatusCodeFromJSON, EOrderStatusCodeFromJSONTyp
 export interface OrderDetailDto {
   /**
    *
-   * @type {EOrderStatusCode}
+   * @type {string}
    * @memberof OrderDetailDto
    */
-  orderStatusCode?: EOrderStatusCode;
+  orderStatusCode?: string | null;
   /**
    *
    * @type {number}
@@ -92,7 +90,7 @@ export function OrderDetailDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     return json;
   }
   return {
-    orderStatusCode: !exists(json, "orderStatusCode") ? undefined : EOrderStatusCodeFromJSON(json["orderStatusCode"]),
+    orderStatusCode: !exists(json, "orderStatusCode") ? undefined : json["orderStatusCode"],
     orderId: !exists(json, "orderId") ? undefined : json["orderId"],
     startDate: !exists(json, "startDate") ? undefined : new Date(json["startDate"]),
     endDate: !exists(json, "endDate") ? undefined : new Date(json["endDate"]),
@@ -113,7 +111,7 @@ export function OrderDetailDtoToJSON(value?: OrderDetailDto | null): any {
     return null;
   }
   return {
-    orderStatusCode: EOrderStatusCodeToJSON(value.orderStatusCode),
+    orderStatusCode: value.orderStatusCode,
     orderId: value.orderId,
     startDate: value.startDate === undefined ? undefined : value.startDate.toISOString(),
     endDate: value.endDate === undefined ? undefined : value.endDate.toISOString(),

@@ -9,6 +9,8 @@ namespace PaulExpress.BusinessLogic.MapperProfiles
         public UserProfile()
         {
             CreateMap<User, UserDto>();
+
+            CreateMap<UserRole, UserRoleDto>();
         }
     }
 }

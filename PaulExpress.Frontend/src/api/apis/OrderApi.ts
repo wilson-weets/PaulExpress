@@ -42,6 +42,10 @@ export interface OrderApiApiOrderCriteriasGetRequest {
   includeListsValues?: boolean;
 }
 
+export interface OrderApiApiOrderDeleteOrderIdGetRequest {
+  orderId: number;
+}
+
 export interface OrderApiApiOrderOrderIdGetRequest {
   orderId: number;
 }
@@ -134,6 +138,45 @@ export class OrderApi extends runtime.BaseAPI {
   ): Promise<Array<FilterCriteriaInfo>> {
     const response = await this.apiOrderCriteriasGetRaw(requestParameters);
     return await response.value();
+  }
+
+  /**
+   */
+  async apiOrderDeleteOrderIdGetRaw(
+    requestParameters: OrderApiApiOrderDeleteOrderIdGetRequest
+  ): Promise<runtime.ApiResponse<void>> {
+    if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
+      throw new runtime.RequiredError(
+        "orderId",
+        "Required parameter requestParameters.orderId was null or undefined when calling apiOrderDeleteOrderIdGet."
+      );
+    }
+
+    const queryParameters: runtime.HTTPQuery = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Bearer authentication
+    }
+
+    const response = await this.request({
+      path: `/api/Order/Delete/{orderId}`.replace(
+        `{${"orderId"}}`,
+        encodeURIComponent(String(requestParameters.orderId))
+      ),
+      method: "GET",
+      headers: headerParameters,
+      query: queryParameters
+    });
+
+    return new runtime.VoidApiResponse(response);
+  }
+
+  /**
+   */
+  async apiOrderDeleteOrderIdGet(requestParameters: OrderApiApiOrderDeleteOrderIdGetRequest): Promise<void> {
+    await this.apiOrderDeleteOrderIdGetRaw(requestParameters);
   }
 
   /**

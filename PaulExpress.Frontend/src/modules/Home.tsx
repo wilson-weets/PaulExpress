@@ -32,7 +32,7 @@ const PEButton = styled(Button)`
 
 export const Home: React.FunctionComponent = () => {
   const logo = require("../assets/logo.png");
-  const { t, tUnsafe } = useTl();
+  const { t } = useTl();
   const history = useHistory();
 
   const handleClick = () => {
